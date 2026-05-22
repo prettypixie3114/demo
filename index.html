@@ -7,7 +7,6 @@
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         * {
             margin: 0;
@@ -144,7 +143,27 @@
 
     <script type="text/babel">
         const { useState } = React;
-        const { ChevronDown, AlertCircle, CheckCircle2, TrendingUp, Users, DollarSign, Target } = lucide;
+
+        const Icon = ({ size = 20, color = 'currentColor', style, children }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24"
+                 fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={style}>
+                {children}
+            </svg>
+        );
+        const ChevronDown = (props) => <Icon {...props}><path d="m6 9 6 6 6-6"/></Icon>;
+        const AlertCircle = (props) => (
+            <Icon {...props}>
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="12" x2="12" y1="8" y2="12"/>
+                <line x1="12" x2="12.01" y1="16" y2="16"/>
+            </Icon>
+        );
+        const CheckCircle2 = (props) => (
+            <Icon {...props}>
+                <circle cx="12" cy="12" r="10"/>
+                <path d="m9 12 2 2 4-4"/>
+            </Icon>
+        );
 
         const FFTExecutiveDashboard = () => {
             const [expandedIssue, setExpandedIssue] = useState(null);
